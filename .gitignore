@@ -3,3 +3,4 @@
 tsconfig.json
 raw.ts
 pastSolutions.ts
+.gitignore
