@@ -19,7 +19,7 @@ const formatValue: FormatValue = (value) =>{
 
 //=============== Problem 2========================
 
-type GetLength = (value: string | number[]) => number;
+type GetLength = (value: string | any[]) => number;
 
 const getLength: GetLength = (value) =>{
     if(typeof value === 'string'){
@@ -32,6 +32,8 @@ const getLength: GetLength = (value) =>{
 
     throw new Error("invalid type")
 }
+
+
 
 
 //================= Problem 3=======================
@@ -50,17 +52,22 @@ class Person {
     };
 };
 
+
 //===================== Problem 4====================
+
+
+
 
 type Books = {
     title: string;
-    rating: number & {__range__: "0-5"};
+    rating: number ;
 };
 
 const filterByRating =(value: Books[]): Books[] =>{
       let newArray: Books[] = [...value];
       return newArray.filter((value)=>value.rating >=4);
 };
+
 
 
 //================== Problem 5===================
@@ -78,6 +85,7 @@ const filterActiveUsers =(user:Users[]): Users[] =>{
 };
 
 
+
 //============= Problem 6======================
 
 interface Book{
@@ -88,9 +96,10 @@ interface Book{
 }
 
 const printBookDetails =(book:Book): Book =>{
-     console.log(`Title: ${book.title}, Author: ${book.author}, publishedYear: ${book.publishedYear}, isAvailable: ${book.isAvailable}`);
+     console.log(`Title: ${book.title}, Author: ${book.author}, publishedYear: ${book.publishedYear}, isAvailable: ${book.isAvailable ? 'Yes' : 'No'}`);
      return book;
 };
+
 
 //=============== Problem 7==========================
 
@@ -99,7 +108,7 @@ type UniqueArray = (number | string)[];
 
 //helping function
 const filterDublicate = (array1:UniqueArray, array2:UniqueArray) =>{
-    let newArray = array2;
+    let newArray = [...array2];
     for(let i = 0; i < array1.length; i++){
         let found = false;
         for(let j = 0; j < newArray .length; j++){
@@ -133,11 +142,6 @@ const getUniqueValues =(array1: UniqueArray , array2: UniqueArray) =>{
 
 }
 
-const array1 = [1, "1", 2, "apple"];
-const array2 = ["1", 3, "banana", 2];
-console.log(getUniqueValues(array1, array2));
-
-
 
 
 
@@ -151,23 +155,21 @@ type CalculateTotalPrice = {
 }
 
 const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
-    let totalPrice = 0;
-     if(array.length === 0){
-        return 0
-     }
+    
+    const productPrice = array.map((product)=>{
+        let totalPrice = 0;
+        if(product.discount){
+            totalPrice = (product.price * product.quantity) - (product.price * ((product.discount)/100) * product.quantity);
+        }else{
+            totalPrice = (product.price * product.quantity)
+        }
+        return totalPrice
+    });
 
-     for(let i = 0; i < array.length; i++){
-         const product = array[i];
-         if(product?.discount){
-            totalPrice = (totalPrice+(product.price) * product.quantity) - ((product.price * product.quantity) * (product.discount/100))
-         }else{
-            if(product){
-                totalPrice = (totalPrice+(product.price) * product.quantity)
-            }
-         }
-     }
+    return productPrice.reduce((total, price)=> total + price, 0)
 
-     return totalPrice;
 }
+
+
 
 
