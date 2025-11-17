@@ -30,7 +30,7 @@ const getLength: GetLength = (value) =>{
         return value.length;
     }
 
-    return 0;
+    throw new Error("invalid type")
 }
 
 
