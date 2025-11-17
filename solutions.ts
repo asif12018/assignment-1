@@ -52,12 +52,104 @@ class Person {
 
 //===================== Problem 4====================
 
-type Book = {
+type Books = {
     title: string;
     rating: number;
 };
 
-const filterByRating =(value: Book[]): Book[] =>{
-      return value.filter((value)=>value.rating >=4);
+const filterByRating =(value: Books[]): Books[] =>{
+      let newArray: Books[] = [...value];
+      return newArray.filter((value)=>value.rating >=4);
+};
+
+
+//================== Problem 5===================
+
+type Users = {
+    id:number;
+    name:string;
+    email:string;
+    isActive:boolean;
+};
+
+const filterActiveUsers =(user:Users[]): Users[] =>{
+    let newArray = [...user];
+    return newArray.filter((value)=> value.isActive ===true);
+};
+
+
+//============= Problem 6======================
+
+interface Book{
+    title: string;
+    author: string;
+    publishedYear: number;
+    isAvailable: boolean;
 }
+
+const printBookDetails =(book:Book): Book =>{
+     console.log(`Title: ${book.title}, Author: ${book.author}, publishedYear: ${book.publishedYear}, isAvailable: ${book.isAvailable}`);
+     return book;
+};
+
+//=============== Problem 7==========================
+
+type UniqueArray = (number | string)[];
+
+const getUniqueValues =(array1: UniqueArray , array2: UniqueArray) =>{
+    let uniqueArray: UniqueArray = [...array1];
+    
+    for(let i = 0; i < array2.length; i++){
+        let found = false;
+        for(let j = 0; j < uniqueArray.length; j++){
+            //check if it exist on array2
+            if(uniqueArray[j]===array2[i]){
+                found = true;
+                break;
+            }
+        }
+
+        // push it if it exist
+        if(!found ){
+            let value = array2[i];
+            if(value !== undefined){
+                uniqueArray.push(value);
+            }
+        }
+ 
+        
+    }
+
+    return uniqueArray;
+}
+
+//====================problem 8======================
+
+type CalculateTotalPrice = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+}
+
+const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
+    let totalPrice = 0;
+     if(array.length === 0){
+        return 0
+     }
+
+     for(let i = 0; i < array.length; i++){
+         const product = array[i];
+         if(product?.discount){
+            totalPrice = (totalPrice+(product.price) * product.quantity) - ((product.price * product.quantity) * (product.discount/100))
+         }else{
+            if(product){
+                totalPrice = (totalPrice+(product.price) * product.quantity)
+            }
+         }
+     }
+
+     return totalPrice;
+}
+
 
