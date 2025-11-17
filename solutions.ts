@@ -54,7 +54,7 @@ class Person {
 
 type Books = {
     title: string;
-    rating: number;
+    rating: number & {__range__: "0-5"};
 };
 
 const filterByRating =(value: Books[]): Books[] =>{
