@@ -96,32 +96,50 @@ const printBookDetails =(book:Book): Book =>{
 
 type UniqueArray = (number | string)[];
 
-const getUniqueValues =(array1: UniqueArray , array2: UniqueArray) =>{
-    let uniqueArray: UniqueArray = [...array1];
-    
-    for(let i = 0; i < array2.length; i++){
+
+//helping function
+const filterDublicate = (array1:UniqueArray, array2:UniqueArray) =>{
+    let newArray = array2;
+    for(let i = 0; i < array1.length; i++){
         let found = false;
-        for(let j = 0; j < uniqueArray.length; j++){
+        for(let j = 0; j < newArray .length; j++){
             //check if it exist on array2
-            if(uniqueArray[j]===array2[i]){
+            if( newArray[j]===array1[i]){
                 found = true;
                 break;
             }
         }
 
-        // push it if it exist
+        // push it if it didnt  exist
         if(!found ){
-            let value = array2[i];
+            let value = array1[i];
             if(value !== undefined){
-                uniqueArray.push(value);
+                newArray .push(value);
             }
         }
  
         
     }
-
-    return uniqueArray;
+    return newArray;
 }
+
+
+const getUniqueValues =(array1: UniqueArray , array2: UniqueArray) =>{
+    let uniqueArray: UniqueArray = filterDublicate(array1, []);
+    
+    const totalNewArray: UniqueArray = filterDublicate(array2, uniqueArray);
+
+    return totalNewArray;
+
+}
+
+const array1 = [1, "1", 2, "apple"];
+const array2 = ["1", 3, "banana", 2];
+console.log(getUniqueValues(array1, array2));
+
+
+
+
 
 //====================problem 8======================
 
