@@ -1,6 +1,5 @@
 
 
-//------------------Problem 1--------------------
 
 type FormatValue = (value: string | number | boolean) => string | number | boolean;
 
@@ -17,7 +16,6 @@ const formatValue: FormatValue = (value) =>{
 };
 
 
-//=============== Problem 2========================
 
 type GetLength = (value: string | any[]) => number;
 
@@ -36,7 +34,7 @@ const getLength: GetLength = (value) =>{
 
 
 
-//================= Problem 3=======================
+
 
 class Person {
     name: string;
@@ -54,7 +52,7 @@ class Person {
 
 
 
-//===================== Problem 4====================
+
 
 
 
@@ -71,7 +69,6 @@ const filterByRating =(value: Books[]): Books[] =>{
 
 
 
-//================== Problem 5===================
 
 type Users = {
     id:number;
@@ -87,7 +84,6 @@ const filterActiveUsers =(user:Users[]): Users[] =>{
 
 
 
-//============= Problem 6======================
 
 interface Book{
     title: string;
@@ -102,25 +98,25 @@ const printBookDetails =(book:Book): Book =>{
 };
 
 
-//=============== Problem 7==========================
+
 
 type UniqueArray = (number | string)[];
 
 
-//helping function
+
 const filterDublicate = (array1:UniqueArray, array2:UniqueArray): UniqueArray =>{
     let newArray = [...array2];
     for(let i = 0; i < array1.length; i++){
         let found = false;
         for(let j = 0; j < newArray .length; j++){
-            //check if it exist on array2
+     
             if( newArray[j]===array1[i]){
                 found = true;
                 break;
             }
         }
 
-        // push it if it didnt  exist
+        
         if(!found ){
             let value = array1[i];
             if(value !== undefined){
@@ -146,7 +142,7 @@ const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray 
 
 
 
-//====================problem 8======================
+
 
 type CalculateTotalPrice = {
     name: string;
