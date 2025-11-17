@@ -47,10 +47,11 @@ class Person {
         this.age = age;
     };
 
-    getDetails(){
-        return `Name: ${this.name}, Age: ${this.age}`
+    getDetails():string{
+        return `'Name: ${this.name}, Age: ${this.age}'`
     };
 };
+
 
 
 //===================== Problem 4====================
@@ -107,7 +108,7 @@ type UniqueArray = (number | string)[];
 
 
 //helping function
-const filterDublicate = (array1:UniqueArray, array2:UniqueArray) =>{
+const filterDublicate = (array1:UniqueArray, array2:UniqueArray): UniqueArray =>{
     let newArray = [...array2];
     for(let i = 0; i < array1.length; i++){
         let found = false;
@@ -133,7 +134,7 @@ const filterDublicate = (array1:UniqueArray, array2:UniqueArray) =>{
 }
 
 
-const getUniqueValues =(array1: UniqueArray , array2: UniqueArray) =>{
+const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray =>{
     let uniqueArray: UniqueArray = filterDublicate(array1, []);
     
     const totalNewArray: UniqueArray = filterDublicate(array2, uniqueArray);
@@ -152,7 +153,7 @@ type CalculateTotalPrice = {
     price: number;
     quantity: number;
     discount?: number;
-}
+};
 
 const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
     
@@ -168,7 +169,9 @@ const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
 
     return productPrice.reduce((total, price)=> total + price, 0)
 
-}
+};
+
+
 
 
 
