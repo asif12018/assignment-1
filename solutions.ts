@@ -63,6 +63,11 @@ type Books = {
 };
 
 const filterByRating =(value: Books[]): Books[] =>{
+      value.map((book)=>{
+        if(book.rating < 0 || book.rating >5){
+             throw new Error(`Invalid rating: ${book.rating}. Rating must be between 0 and 5.`);
+        }
+      })
       let newArray: Books[] = [...value];
       return newArray.filter((value)=>value.rating >=4);
 };
