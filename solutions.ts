@@ -109,6 +109,11 @@ type UniqueArray = (number | string)[];
 
 
 
+
+const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray =>{
+
+
+    
 const filterDublicate = (array1:UniqueArray, array2:UniqueArray): UniqueArray =>{
     let newArray = [...array2];
     for(let i = 0; i < array1.length; i++){
@@ -135,7 +140,8 @@ const filterDublicate = (array1:UniqueArray, array2:UniqueArray): UniqueArray =>
 }
 
 
-const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray =>{
+
+
     let uniqueArray: UniqueArray = filterDublicate(array1, []);
     
     const totalNewArray: UniqueArray = filterDublicate(array2, uniqueArray);
@@ -143,6 +149,9 @@ const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray 
     return totalNewArray;
 
 }
+
+
+
 
 
 
