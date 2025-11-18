@@ -125,7 +125,7 @@ const filterDublicate = (array1:UniqueArray, array2:UniqueArray): UniqueArray =>
         if(!found ){
             let value = array1[i];
             if(value !== undefined){
-                newArray .push(value);
+                newArray[newArray.length] = value;
             }
         }
  
@@ -143,7 +143,6 @@ const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray 
     return totalNewArray;
 
 }
-
 
 
 
