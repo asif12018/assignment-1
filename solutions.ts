@@ -17,6 +17,7 @@ const formatValue: FormatValue = (value) =>{
 
 
 
+
 type GetLength = (value: string | any[]) => number;
 
 const getLength: GetLength = (value) =>{
@@ -36,6 +37,7 @@ const getLength: GetLength = (value) =>{
 
 
 
+
 class Person {
     name: string;
     age: number;
@@ -46,12 +48,9 @@ class Person {
     };
 
     getDetails():string{
-        return `Name: ${this.name}, Age: ${this.age}`
+        return `'Name: ${this.name}, Age: ${this.age}'`
     };
 };
-
-
-
 
 
 
@@ -75,6 +74,8 @@ const filterByRating =(value: Books[]): Books[] =>{
 
 
 
+
+
 type Users = {
     id:number;
     name:string;
@@ -86,6 +87,8 @@ const filterActiveUsers =(user:Users[]): Users[] =>{
     let newArray = [...user];
     return newArray.filter((value)=> value.isActive ===true);
 };
+
+
 
 
 
@@ -105,9 +108,13 @@ const printBookDetails =(book:Book): Book =>{
 
 
 
+
+
+
+
+
+
 type UniqueArray = (number | string)[];
-
-
 
 
 const getUniqueValues =(array1: UniqueArray , array2: UniqueArray): UniqueArray =>{
@@ -140,15 +147,15 @@ const filterDublicate = (array1:UniqueArray, array2:UniqueArray): UniqueArray =>
 }
 
 
-
-
     let uniqueArray: UniqueArray = filterDublicate(array1, []);
     
     const totalNewArray: UniqueArray = filterDublicate(array2, uniqueArray);
 
     return totalNewArray;
 
-}
+};
+
+
 
 
 
@@ -184,6 +191,8 @@ const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
     return productPrice.reduce((total, price)=> total + price, 0)
 
 };
+
+
 
 
 
