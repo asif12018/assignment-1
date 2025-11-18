@@ -46,7 +46,7 @@ class Person {
     };
 
     getDetails():string{
-        return `'Name: ${this.name}, Age: ${this.age}'`
+        return `Name: ${this.name}, Age: ${this.age}`
     };
 };
 
