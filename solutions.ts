@@ -160,6 +160,11 @@ const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
     const productPrice = array.map((product)=>{
         let totalPrice = 0;
         if(product.discount){
+
+                if(product.discount < 0 || product.discount > 100){
+                    throw new Error(`Invalid discount ${product.discount}. discount must be between 0 to 100`);
+                }
+
             totalPrice = (product.price * product.quantity) - (product.price * ((product.discount)/100) * product.quantity);
         }else{
             totalPrice = (product.price * product.quantity)
@@ -170,6 +175,7 @@ const calculateTotalPrice = (array: CalculateTotalPrice[]): number =>{
     return productPrice.reduce((total, price)=> total + price, 0)
 
 };
+
 
 
 
